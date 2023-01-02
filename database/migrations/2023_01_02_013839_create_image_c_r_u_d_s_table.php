@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('image_crud_controllers', function (Blueprint $table) {
+        Schema::create('image_c_r_u_d_s', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_crud_controllers');
+        Schema::dropIfExists('image_c_r_u_d_s');
     }
 };
