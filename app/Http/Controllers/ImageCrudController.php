@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ImageCRUD;
 use Illuminate\Http\Request;
-
+use Session;
 class ImageCrudController extends Controller
 {
     public function index()
@@ -22,6 +23,18 @@ class ImageCrudController extends Controller
             'image' => 'required'
         ]);
 
-        
+        $imageName = "";
+        if($image = $request->file('image')){
+        //   $imageName = time(). '.' . $request->file('image')->getClientOriginalExtension();
+          $imageName =  time().'-'.uniqid().'.'.$image->getClientOriginalExtension();
+          $image->move('image/product', $imageName);
+        }
+        ImageCRUD::create([
+            'name' => $request->name,
+            'image' => $imageName
+
+        ]);
+        Session::flash('message', 'Product Create Successfully');
+        return redirect()->back();
     }
 }

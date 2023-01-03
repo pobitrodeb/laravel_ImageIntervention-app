@@ -21,6 +21,11 @@
     </div>
 @endif
             <div class="card-body">
+                <div class="card-header">
+                    @if(Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+                </div>
                <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
