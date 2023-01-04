@@ -27,7 +27,7 @@
             @endif
             <div class="card-body">
 
-               <form action="" method="POST" enctype="multipart/form-data">
+               <form action="{{ route('update.product',['id' =>$product->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-3">Product Image  </div>

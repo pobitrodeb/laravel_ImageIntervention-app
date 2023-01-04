@@ -7,5 +7,6 @@ Route::get('/', [ImageCrudController::class, 'index'])->name('home');
 Route::get('/create-product', [ImageCrudController::class, 'create'])->name('create.product');
 Route::post('/store-product', [ImageCrudController::class, 'store'])->name('store.product');
 Route::get('/show-product/{id}', [ImageCrudController::class, 'edit'])->name('edit.product');
+Route::post('/update-product/{id}', [ImageCrudController::class, 'update'])->name('update.product');
 
 Route::get('/delete-product/{id}', [ImageCrudController::class, 'distroy'])->name('delete.product');
