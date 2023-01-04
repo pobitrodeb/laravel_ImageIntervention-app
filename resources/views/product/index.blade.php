@@ -12,6 +12,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header"> <a href="{{ route('create.product') }}" class="btn btn-primary"> Add Product </a></div>
+            <h4 class="text-center text-white bg-danger">{{ Session('deleteMessage') }}</h4>
         </div>
         <div class="card-body">
             <table class="table">
@@ -31,8 +32,8 @@
                             <img src="{{asset('image/product/'.$product->image)}}" alt="" height="100px" width="150px">
                         </td>
                         <td>
-                            <a href="" class="btn btn-warning"> Edit </a>
-                            <a href="" class="btn btn-danger"> Delete  </a>
+                            <a href="{{ route('edit.product', ['id' => $product->id]) }}" class="btn btn-warning"> Edit </a>
+                            <a href="{{ route('delete.product',['id' =>$product->id]) }}" class="btn btn-danger"> Delete  </a>
                         </td>
 
                   </tr>

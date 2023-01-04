@@ -20,7 +20,6 @@ class ImageCrudController extends Controller
         return view('product.create');
     }
 
-
     public function store(Request $request){
         $request->validate([
             'name' => 'required',
@@ -41,4 +40,23 @@ class ImageCrudController extends Controller
         Session::flash('message', 'Product Create Successfully');
         return redirect()->back();
     }
+
+
+
+    public function edit($id)
+    {
+       // return $id;
+       $product = ImageCRUD::findOrFail($id);
+        return view('product.edit', compact('product'));
+    }
+
+
+    
+    public function distroy($id)
+    {
+        $product = ImageCRUD::findOrFail($id);
+         $product->delete();
+        return redirect()->back()->with('deleteMessage', 'Delete Successfully');
+    }
+
 }
