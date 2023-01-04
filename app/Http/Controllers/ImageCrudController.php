@@ -9,13 +9,17 @@ class ImageCrudController extends Controller
 {
     public function index()
     {
-        return view('product.index');
+        $products = ImageCRUD::all();
+        // dd($products);
+        // return $products;
+        return view('product.index', compact('products'));
     }
 
     public function create()
     {
         return view('product.create');
     }
+
 
     public function store(Request $request){
         $request->validate([

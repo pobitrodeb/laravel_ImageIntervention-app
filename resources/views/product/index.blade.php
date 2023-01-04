@@ -18,29 +18,31 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Product Name </th>
+                    <th scope="col">Image </th>
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                   @forelse ($products as $product)
+                   <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $product->name }}</td>
+                        <td>
+                            <img src="{{asset('image/product/'.$product->image)}}" alt="" height="100px" width="150px">
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-warning"> Edit </a>
+                            <a href="" class="btn btn-danger"> Delete  </a>
+                        </td>
+
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                   @empty
+                           <div class="bg-danger">
+                            <p> No Product </p>
+                            <a href="{{ route('store.product') }}"> Add New </a>
+                           </div>
+                   @endforelse
+
                 </tbody>
               </table>
         </div>

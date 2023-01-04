@@ -9,23 +9,24 @@
   <body>
    <section class="py-5">
     <div class="container">
-
+     
         <div class="card">
+            <div class="card-header">
+                @if(Session::has('message'))
+                <p class="alert alert-success">{{ Session::get('message') }}</p>
+                @endif
+            </div>
             @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-            <div class="card-body">
-                <div class="card-header">
-                    @if(Session::has('message'))
-                    <p class="alert alert-success">{{ Session::get('message') }}</p>
-                    @endif
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
+            @endif
+            <div class="card-body">
+
                <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
